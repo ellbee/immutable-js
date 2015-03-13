@@ -1039,18 +1039,19 @@
       return this._iter.toSeq();
     };
 
-    FromEntriesSequence.prototype.__iterate = function(fn, reverse) {var this$0 = this;
-      return this._iter.__iterate(function(entry ) {
-        // Check if entry exists first so array access doesn't throw for holes
-        // in the parent iteration.
-        if (entry) {
-          validateEntry(entry);
-          //var iterable = isIterable(entry);
-          var k = !!(entry.get.call && entry.get.apply) ? entry.get(0) : entry[0];
-          var v = !!(entry.get.call && entry.get.appyl) ? entry.get(1) : entry[1];
-          return fn(v, k, this$0);
-        }
-      }, reverse);
+    FromEntriesSequence.prototype.__iterate = function(fn, reverse) {
+        return this._iter.__iterate(function(entry ) {
+          // Check if entry exists first so array access doesn't throw for holes
+          // in the parent iteration.
+          if (entry) {
+            validateEntry(entry);
+            //var hasGet = entry.get && entry.get.constructor === Function;
+            var hasGet = isIterable(entry);
+            var k = hasGet ? entry.get(0) : entry[0];
+            var v = hasGet ? entry.get(1) : entry[1];
+            return fn(v, k, this);
+          }
+        }, reverse);
     };
 
     FromEntriesSequence.prototype.__iterator = function(type, reverse) {
@@ -1066,9 +1067,9 @@
           // in the parent iteration.
           if (entry) {
             validateEntry(entry);
-            var hasGet = !!(entry.get.call && entry.get.apply);
-            var k = hasGet ? entry.get(0) : entry[0];
-            var v = hasGet ? entry.get(1) : entry[1];
+            var iterable = isIterable(entry);
+            var k = iterable ? entry.get(0) : entry[0];
+            var v = iterable ? entry.get(1) : entry[1];
             return type === ITERATE_ENTRIES ? step :
               iteratorValue(type, k, v, step);
           }

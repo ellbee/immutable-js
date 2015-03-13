@@ -1,39 +1,75 @@
 describe('Map', function () {
 
-  var obj2 = {};
+  //var obj2 = {};
+  //for (var ii = 0; ii < 2; ii++) {
+    //obj2['x' + ii] = ii;
+  //}
+
+  //it('builds from an object of 2', function() {
+    //Immutable.Map(obj2);
+  //});
+
+  //var obj8 = {};
+  //for (var ii = 0; ii < 8; ii++) {
+    //obj8['x' + ii] = ii;
+  //}
+
+  //it('builds from an object of 8', function() {
+    //Immutable.Map(obj8);
+  //});
+
+  //var obj32 = {};
+  //for (var ii = 0; ii < 32; ii++) {
+    //obj32['x' + ii] = ii;
+  //}
+
+  //it('builds from an object of 32', function() {
+    //Immutable.Map(obj32);
+  //});
+
+  //var obj1024 = {};
+  //for (var ii = 0; ii < 1024; ii++) {
+    //obj1024['x' + ii] = ii;
+  //}
+
+  //it('builds from an object of 1024', function() {
+    //Immutable.Map(obj1024);
+  //});
+
+  var array2 = [];
   for (var ii = 0; ii < 2; ii++) {
-    obj2['x' + ii] = ii;
+    array2[ii] = ['x' + ii, ii];
   }
 
-  it('builds from an object of 2', function() {
-    Immutable.Map(obj2);
+  it('builds from an array of 2', function() {
+    Immutable.Map(array2);
   });
 
-  var obj8 = {};
+  var array8 = [];
   for (var ii = 0; ii < 8; ii++) {
-    obj8['x' + ii] = ii;
+    array8[ii] = ['x' + ii, ii];
   }
 
-  it('builds from an object of 8', function() {
-    Immutable.Map(obj8);
+  it('builds from an array of 8', function() {
+    Immutable.Map(array8);
   });
 
-  var obj32 = {};
+  var array32 = [];
   for (var ii = 0; ii < 32; ii++) {
-    obj32['x' + ii] = ii;
+    array32[ii] = ['x' + ii, ii];
   }
 
-  it('builds from an object of 32', function() {
-    Immutable.Map(obj32);
+  it('builds from an array of 32', function() {
+    Immutable.Map(array32);
   });
 
-  var obj1024 = {};
+  var array1024 = [];
   for (var ii = 0; ii < 1024; ii++) {
-    obj1024['x' + ii] = ii;
+    array1024[ii] = ['x' + ii, ii];
   }
 
-  it('builds from an object of 1024', function() {
-    Immutable.Map(obj1024);
+  it('builds from an array of 1024', function() {
+    Immutable.Map(array1024);
   });
 
   var list2 = Immutable.List().asMutable();
@@ -69,7 +105,7 @@ describe('Map', function () {
   list32 = list32.asImmutable();
 
   it('builds from a list of 32', function() {
-    Immutable.map(list32);
+    Immutable.Map(list32);
   });
 
   var list1024 = Immutable.List().asMutable();
