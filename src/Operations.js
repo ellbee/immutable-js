@@ -152,14 +152,6 @@ export class FromEntriesSequence extends KeyedSeq {
         // in the parent iteration.
         if (entry) {
           validateEntry(entry);
-
-          //var hasGet = entry.get && entry.get.constructor === Function;
-
-          //var hasGet = entry.get && entry.get.call && entry.get.apply;
-
-          //var getClass = {}.toString;
-          //var hasGet = getClass.call(entry.get) === '[object Function]';
-
           var iterable = !Array.isArray(entry) && isIterable(entry);
           var k = iterable ? entry.get(0) : entry[0];
           var v = iterable ? entry.get(1) : entry[1];
